@@ -120,6 +120,8 @@ It tells the component to animate whatever changes are made to the component whe
 
 ### The Animated Module
 
+||||
+|-|-|-|
 | Values| Value, ValueXY | What's the current position of the element being animated |
 | Types | Spring, Decay, Timing | How is the animation changing |
 | Components | View, Text, Image | Apply the animation's current position to an actual component |
@@ -127,6 +129,8 @@ It tells the component to animate whatever changes are made to the component whe
 
 ### PanResponder
 
+||||
+|-|-|-|
 | onStartShoulSetPanResponder | this is a function that is being called when the user preses the finger on the screen | It gives us the chance to say that we want this component to be responsible for this gesture () => true |
 | onPanResponderMove | this function is being called when the user moves the finger on the screen | we can use this to move the component on the screen by following the finger |
 | onPanResponderRelease | is called when the user lifts the finger from the screen | this gives us the possibility to decide what to do with the component when the user releases |
