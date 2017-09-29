@@ -1,11 +1,11 @@
-#Create React Native App
+# Create React Native App
 
 1. by installing the react native cli as shown on the official documentation
 2. Expo XDE
 3. Create React Native App
 4. Sketch
 
-##Why Expo XDE?
+## Why Expo XDE?
 
 Expo makes it easier to run the applications that we create on an actual device rather than a simulator.
 Expo has a bunch of added functionality.
@@ -18,9 +18,9 @@ Expo has a bunch of added functionality.
  - Easy On Device Testing
  - Common Extra Components
 
-#Swipe
+# Swipe
 
-##Animation systems in React Native
+## Animation systems in React Native
 
  1. LayoutAnimation
 	- easy to setup
@@ -39,9 +39,9 @@ Expo has a bunch of added functionality.
 
 ## Properties that sit inside the Animated Module
 
-#Values: value, valueXY... : What's the current position of the element being animated?
-#Types: Spring, Decay, Timing... : How is the animation changing?
-#Components: View, Text Image... : Apply the animation's current to an actual component.
+- Values: value, valueXY... : What's the current position of the element being animated?
+- Types: Spring, Decay, Timing... : How is the animation changing?
+- Components: View, Text Image... : Apply the animation's current to an actual component.
 
 ##  Animation life cycle
 	- Component + Animated.View rendered
@@ -54,7 +54,7 @@ Expo has a bunch of added functionality.
 	- Before starting coding is good practice to start thinking about the methods and the props that we will pass 
 	down to the component, form the parent component.
 
-#Difference between Animated module and PanResponder
+# Difference between Animated module and PanResponder
 
 	- PanRensponder handles the user input, handles the input.
 	- The actual movement of the Component on the screen is handled by the Animation Module, handles the output.
@@ -70,34 +70,34 @@ Expo has a bunch of added functionality.
 
 	- The gesture object from pan responder can be accessed only when the onPanResponderMove is executing and then is set back to 0 as soon as it finishes unless we save that object manually.
 
-###Gesture Object
+### Gesture Object
 	- dx and dy: are the total distances that the user has moved their finger in a single gesture, total life cycle.
 	- moveX and moveY: is where the user has clicked on the screen.
 	- vx and vy: are units on how quickly the use has moved the object.
 	- numberActiveTouches: is the number of of fingers that the user uses to touch the screen.
 
-##Interpolation system in react native
+## Interpolation system in react native
 
 When building an app we usually want to tie a property to another to create a certain effect or animation. Example: as the user moves the card on the screen 
 I also want to to change the rotation as well.
 The purpose of the interpolation system is to link two different scales one input one and an output one, it takes an input value and as that value changes it will output another unrelated value that is proportional to the input value.
 We should pass, when possible dynamic values to the interpolation system for example if we want to pass the with as an input value we should consider using dimension.get.width so even if the width of the screen changes dramatically the proportion will still be correct.
 
-##Difference between Animated.spring and Animated.timing.
+## Difference between Animated.spring and Animated.timing.
 
 	- Spring: gives a bouncy feeling.
 	- Timing: is more linear.
 
-##defaultProps
+## defaultProps
 
 When the component is created the component will look at the props that is provided and if is not provided with the props that are listed inside defaultProps{} it will automatically assign the properties inside defaultProps{}.
 
-##Flashing images
+## Flashing images
 
 When an image container is promoted from a View to a Animate.View, react native re-fetches the image so this causes that flashing image. A solution to this problem is to make the container equal to Animated.View in both cases.
 
 
-##LayoutAnimation
+## LayoutAnimation
 
 ``` javascript
     componentWillUpdate() {
@@ -108,9 +108,9 @@ When an image container is promoted from a View to a Animate.View, react native 
 
 It tells the component to animate whatever changes are made to the component when the component will re-render.
 
-##DeckWrapUp
+## DeckWrapUp
 
-###Animation systems in react native
+### Animation systems in react native
 
 |LayoutAnimation|Animated|
 |---------------|--------|
@@ -118,15 +118,15 @@ It tells the component to animate whatever changes are made to the component whe
 | Not much control | Allows for more complicated animations |
 | Some things might get animated that we don't want them to be| You Probably need this if you want to handle gesture animations PanResponder|
 
-###The Animated Module
+### The Animated Module
 
-|Values| Value, ValueXY| What's the current position of the element being animated|
-|Types| Spring, Decay, Timing| How is the animation changing|
-|Components|View, Text, Image| Apply the animation's current position to an actual component|
+| Values| Value, ValueXY | What's the current position of the element being animated |
+| Types | Spring, Decay, Timing | How is the animation changing |
+| Components | View, Text, Image | Apply the animation's current position to an actual component |
 
 
-###PanResponder
+### PanResponder
 
-|onStartShoulSetPanResponder| this is a function that is being called when the user preses the finger on the screen| It gives us the chance to say that we want this component to be responsible for this gesture () => true|
-|onPanResponderMove|this function is being called when the user moves the finger on the screen| we can use this to move the component on the screen by following the finger|
-|onPanResponderRelease|is called when the user lifts the finger from the screen| this gives us the possibility to decide what to do with the component when the user releases if|
+| onStartShoulSetPanResponder | this is a function that is being called when the user preses the finger on the screen | It gives us the chance to say that we want this component to be responsible for this gesture () => true |
+| onPanResponderMove | this function is being called when the user moves the finger on the screen | we can use this to move the component on the screen by following the finger |
+| onPanResponderRelease | is called when the user lifts the finger from the screen | this gives us the possibility to decide what to do with the component when the user releases |
