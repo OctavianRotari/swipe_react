@@ -1,9 +1,12 @@
+//@flow
 import React, { Component } from 'react';
-import { 
-    View, 
+import {
+    View,
     Animated,
     PanResponder,
-    Dimensions
+    Dimensions,
+    LayoutAnimation,
+    UIManager
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -35,6 +38,17 @@ class Deck extends Component {
             }
         });
         this.state = { index: 0 };
+    }
+
+    componentWillReceiveProps(nextPros) {
+        if(nextProps.data !== this.props.data) {
+            this.setState({index:0});;;;;;
+        }
+    }
+
+    componentWillUpdate() {
+        UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true); //android
+        LayoutAnimation.spring();
     }
 
     forceSwipe(direction) {
@@ -75,13 +89,13 @@ class Deck extends Component {
             return this.props.renderNoMoreCards();
         }
         return this.props.data.map((item, i) => {
-            if(i < this.state.index) { 
-                return null; 
+            if(i < this.state.index) {
+                return null;
             } else if(i === this.state.index ) {
                 return (
                     <Animated.View
                         key={item.id}
-                        style={[this.getCardStyle(), styles.cardStyle]} 
+                        style={[this.getCardStyle(), styles.cardStyle]}
                         {...this.panResponder.panHandlers}
                     >
                         {this.props.renderCard(item)}
@@ -89,9 +103,12 @@ class Deck extends Component {
                 );
             }
             return (
-                <View key={item.id} style={[styles.cardStyle, { zIndex: 0 }]}>
+                <Animated.View
+                    key={item.id}
+                    style={[styles.cardStyle, { zIndex: 0, top: 10 * (i - this.state.index) }]}
+                >
                     { this.props.renderCard(item) }
-                </View>
+                </Animated.View>
             );
         }).reverse();
     }
